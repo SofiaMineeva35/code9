@@ -1,0 +1,72 @@
+body.rps-game {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #acd9f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.rps-game .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.rps-game .answers {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.rps-game .answer {
+    background-color: #262626;
+    color: #fff;
+    border-radius: 30px;
+    padding: 50px 63px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.rps-game .status {
+    border: 2px solid #fff;
+    width: 500px;
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+}
+
+.rps-game .title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.rps-game .container-score {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.rps-game .container-text div {
+    margin-bottom: 7px;
+}
+
+.rps-game .container-text .grey {
+    color: grey;
+}
+
+.rps-game .container-text .red {
+    color: red;
+}
+
+.rps-game .container-text .green {
+    color: green;
+}

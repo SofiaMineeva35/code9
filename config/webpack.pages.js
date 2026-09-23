@@ -10,6 +10,7 @@ function createPages(template, filename, chunks) {
 
 const htmlPages = [
   createPages('./src/index.html', './index.html', ['index']),
+  createPages('./src/pages/rps-react.html', './rps-react.html', ['index', 'rpsreact']),
 ]
 
 module.exports = htmlPages
