@@ -3,3 +3,9 @@
 /node_modules
 yarn-error.log
 /dev-build
+/dev_build
+/docs
+/test-results
+.env
+.env.*
+!.env.example

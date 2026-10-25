@@ -9,6 +9,7 @@ const path = require('path')
 module.exports = {
   entry: {
     index: './src/javascripts/index.js',
+    brief: './src/javascripts/brief.jsx',
     rpreact: './src/javascripts/rps-game.jsx',
   },
   output: {
@@ -54,7 +55,7 @@ module.exports = {
   },
   plugins: [new MiniCssExtractPlugin(), ...htmlPages],
   optimization: {
-    minimizer: [new CssMinimizerPlugin()]
+    minimizer: ['...', new CssMinimizerPlugin()]
   },
   resolve: {
     fallback: {

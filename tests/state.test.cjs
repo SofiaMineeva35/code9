@@ -1,0 +1,42 @@
+const assert = require('node:assert/strict')
+const fs = require('node:fs')
+const babel = require('@babel/core')
+const path = require('node:path')
+// Преобразуем только наши модули для запуска тестов в Node, без тестового фреймворка.
+const original = require.extensions['.js']
+require.extensions['.js'] = function(module, filename) {
+  if (!filename.includes(path.join('src', 'javascripts', 'brief-'))) return original(module, filename)
+  module._compile(babel.transformSync(fs.readFileSync(filename, 'utf8'), { filename, presets: [['@babel/preset-env', { targets: { node: 'current' } }]] }).code, filename)
+}
+const { emptyDraft, switchMode, combinedText, makeSnapshot } = require('../src/javascripts/brief-state.js')
+const { validateBrief, validateContact, validateFile, validateLink, validateStep } = require('../src/javascripts/brief-validation.js')
+let d = emptyDraft()
+assert.equal(Object.keys(validateBrief(d, [])).length, 3)
+assert.ok(validateStep(d, 0).existing)
+d.existing = 'Есть идея нового продукта'; d.goal = 'Пока не знаю'
+assert.deepEqual(validateStep(d, 1), {})
+assert.equal(validateContact('email', 'anna@example.com'), '')
+assert.ok(validateContact('email', 'anna@'))
+assert.equal(validateContact('phone', '+7 (999) 123-45-67'), '')
+assert.ok(validateContact('phone', '123'))
+assert.equal(validateContact('telegram', '@test_user'), '')
+assert.ok(validateContact('telegram', 'test'))
+assert.ok(validateLink('javascript:alert(1)'))
+assert.equal(validateLink('https://example.com/brief'), '')
+assert.ok(validateFile({ name: 'archive.zip', size: 10 }))
+assert.ok(validateFile({ name: 'large.pdf', size: 21 * 1024 * 1024 }))
+assert.equal(validateFile({ name: 'brief.PDF', size: 20 * 1024 * 1024 }), '')
+d.mode = 'interactive'; d = switchMode(d, 'short')
+assert.equal(d.shortText, combinedText(d))
+d.shortText = 'Мой запрос'; d.shortEdited = true
+const custom = switchMode(switchMode(d, 'interactive'), 'short')
+assert.equal(custom.shortText, 'Мой запрос')
+assert.equal(custom.existing, d.existing)
+d.email = 'anna@example.com'; d.phone = '+7 999 1234567'; d.consent = true
+assert.deepEqual(validateBrief(d, []), {})
+const result = makeSnapshot(d, [{ name: 'brief.txt', size: 100 }], new Date('2026-10-25T12:00:00Z'))
+assert.deepEqual(result.contact, { channel: 'email', value: 'anna@example.com' })
+assert.equal(result.files[0].name, 'brief.txt')
+assert.equal(result.phone, undefined)
+assert.ok(validateBrief(d, [{ status: 'reading' }]).files)
+console.log('PASS: validation, shared draft, edited text, snapshot and file rules')
