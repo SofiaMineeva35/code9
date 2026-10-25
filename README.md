@@ -4,7 +4,7 @@
 
 [Исходные макеты](https://www.figma.com/design/o9CH5WfSTNJoasu6kJoOT6/КОД9?node-id=166-5699) · [Репозиторий](https://github.com/SofiaMineeva35/code9)
 
-Публичный адрес и состояние публикации указаны в [документе сдачи](docs-project/DELIVERY.md).
+[Открыть работающий бриф](https://sofiamineeva35.github.io/code9/) · [Документ сдачи](docs-project/DELIVERY.md).
 
 ## Запуск
 

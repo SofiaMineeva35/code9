@@ -5,9 +5,14 @@
 
 Репозиторий: https://github.com/SofiaMineeva35/code9
 
-Код отправлен в GitHub. Первый запуск Actions успешно установил зависимости, выполнил тесты и сборку; на настройке Pages получен `Get Pages site failed: Not Found` — хостинг ещё не включён. Публичная ссылка будет подтверждена после включения GitHub Pages и успешного deploy. До этого используйте локальный запуск `npm start`. Готовая сборка находится в `docs/`.
+Работающая страница: https://sofiamineeva35.github.io/code9/
 
-Первый запуск: https://github.com/SofiaMineeva35/code9/actions/runs/40221221094
+Публикация подтверждена 25 октября 2026. GitHub Actions: установка, тесты, сборка и deploy — success.
+Успешный запуск: https://github.com/SofiaMineeva35/code9/actions/runs/40222064494
+
+На публичной странице выполнен полный сценарий `BASE_URL=https://sofiamineeva35.github.io/code9 npm run test:browser`: оба брифа, сохранение ответов, шаги, контакты, проверки, вложения, результат и скачивание трёх PDF. Проверены 320, 390, 768 и 1440 px. Ошибок JavaScript и HTTP-ошибок ресурсов в сценарии нет. Отчёт — `public-browser-report.json`.
+
+Первый запуск остановился из-за выключенного Pages. После выбора Source → GitHub Actions публикация выполнена успешно. Готовая локальная сборка также находится в `docs/`.
 
 Для самостоятельной публикации, если потребуется:
 
