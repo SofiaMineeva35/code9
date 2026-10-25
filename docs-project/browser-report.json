@@ -1,0 +1,58 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "result": "PASS",
+  "responsive": [
+    390,
+    320,
+    768,
+    1440
+  ],
+  "geometry": {
+    "page": {
+      "x": 0,
+      "y": 104,
+      "width": 1440,
+      "height": 1391.15625,
+      "top": 104,
+      "right": 1440,
+      "bottom": 1495.15625,
+      "left": 0
+    },
+    "field": {
+      "x": 48,
+      "y": 444.1875,
+      "width": 800,
+      "height": 160,
+      "top": 444.1875,
+      "right": 848,
+      "bottom": 604.1875,
+      "left": 48
+    },
+    "logo": {
+      "x": 48,
+      "y": 30,
+      "width": 180,
+      "height": 44,
+      "top": 30,
+      "right": 228,
+      "bottom": 74,
+      "left": 48
+    },
+    "font": "\"IBM Plex Mono\", monospace",
+    "background": "rgb(246, 246, 244)"
+  },
+  "consoleErrors": [],
+  "failedResponses": [],
+  "scenarios": [
+    "short and interactive completion",
+    "contact switching",
+    "step back and edit",
+    "shared draft and edited short text",
+    "session reload and missing files notice",
+    "valid and invalid files, 5-file limit, deletion",
+    "required fields, email and link errors",
+    "PDF downloads: short, interactive, multipage",
+    "project context removal",
+    "keyboard radio arrows, checkbox Space, visible focus"
+  ]
+}
