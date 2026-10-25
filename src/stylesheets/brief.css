@@ -15,7 +15,6 @@ button, a, label { -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .site-header :focus-visible, .site-footer :focus-visible { outline-color: var(--surface); }
 h2:focus, [tabindex='-1']:focus { outline: none; }
-fieldset[tabindex='-1']:focus { outline: 2px solid var(--error); outline-offset: 4px; }
 .site-header, .site-footer { background: var(--ink); color: var(--surface); }
 .header-content { max-width: 1440px; margin: 0 auto; height: 104px; padding: 0 48px; display: flex; align-items: center; gap: 152px; }
 .header-content > img { flex: 0 0 auto; }
