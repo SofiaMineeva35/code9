@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import App from '.components/AppRps.jsx'
+import App from './components/AppRps.jsx'
 
-ReactDOM.createRoot(document.girElementById('app')).render(
+ReactDOM.createRoot(document.getElementById('app')).render(
     <App />
 )

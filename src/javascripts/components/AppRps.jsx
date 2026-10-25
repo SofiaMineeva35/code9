@@ -8,4 +8,4 @@ function App () {
     )
 }
 
-eexport default App
+export default App
