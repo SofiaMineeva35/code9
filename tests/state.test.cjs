@@ -40,3 +40,15 @@ assert.equal(result.files[0].name, 'brief.txt')
 assert.equal(result.phone, undefined)
 assert.ok(validateBrief(d, [{ status: 'reading' }]).files)
 console.log('PASS: validation, shared draft, edited text, snapshot and file rules')
+// A saved completion survives reload and is independent of later draft edits.
+const { readResult, saveResult, clearResult, RESULT_KEY, readDraft, STORAGE_KEY } = require('../src/javascripts/brief-state.js')
+const memory = new Map()
+global.sessionStorage = { getItem: key => memory.get(key) ?? null, setItem: (key, value) => memory.set(key, value), removeItem: key => memory.delete(key) }
+assert.equal(readResult(), null)
+assert.equal(saveResult(result), true)
+d.shortText = 'Другой текст'
+assert.equal(readResult().description, 'Мой запрос')
+clearResult(); assert.equal(readResult(), null)
+memory.set(RESULT_KEY, '{broken'); assert.equal(readResult(), null)
+memory.set(STORAGE_KEY, JSON.stringify({ ...emptyDraft(), fileNames: null })); assert.deepEqual(readDraft().fileNames, [])
+console.log('PASS: completion restore/reset and malformed stored data')

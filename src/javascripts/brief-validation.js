@@ -29,7 +29,7 @@ export function validateBrief(draft, files) {
   if (contactError) errors[draft.channel] = contactError
   const linkError = validateLink(draft.link)
   if (linkError) errors.link = linkError
-  if (!draft.consent) errors.consent = 'Нужно согласие на обработку данных, чтобы мы могли получить запрос.'
+  if (!draft.consent) errors.consent = 'Подтвердите согласие на обработку персональных данных.'
   if (files.some(f => f.status !== 'ready')) errors.files = 'Дождитесь подготовки файлов. Ошибочные файлы удалите или добавьте повторно.'
   return errors
 }

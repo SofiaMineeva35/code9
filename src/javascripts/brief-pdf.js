@@ -1,5 +1,5 @@
 import fontUrl from '../assets/fonts/IBMPlexMono-Regular.ttf'
-import { channels } from './brief-data'
+import { channels, formatFileSize } from './brief-data'
 // Лениво загружаем библиотеку: до завершения брифа она не нужна.
 export async function createBriefPdf(snapshot) {
   const [{ jsPDF }, response] = await Promise.all([import('jspdf'), fetch(fontUrl)])
@@ -35,9 +35,9 @@ export async function createBriefPdf(snapshot) {
   if (snapshot.company) write('Компания: ' + snapshot.company)
   if (snapshot.context) write('Связанный проект: ' + snapshot.context)
   write('Приложенные материалы', 13)
-  write(snapshot.files.length ? snapshot.files.map(f => f.name).join('\n') : 'Файлы не приложены')
+  write(snapshot.files.length ? snapshot.files.map(f => f.name + ' · ' + formatFileSize(f.size)).join('\n') : 'Файлы не приложены')
   if (snapshot.link) write('Ссылка: ' + snapshot.link)
-  write('В копию включены имена файлов. Содержимое вложений не встроено.', 10)
+  write('В копию включены имена и размеры файлов. Содержимое вложений не встроено.', 10)
   return doc.output('blob')
 }
 export function downloadPdf(blob) {
